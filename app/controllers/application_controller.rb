@@ -49,7 +49,6 @@ class ApplicationController < ActionController::Base
     def oauth_authorized
       action = params[:controller] + "/" + params[:action]
       normalize_token
-      print "<<<<<<<<<<<<<<<<" + params[:token].to_s
       @token = OauthToken.where(token: params[:token]).all_in(scope: [action]).first
       if @token.nil? or @token.blocked?
         render text: "Unauthorized access.", status: 401

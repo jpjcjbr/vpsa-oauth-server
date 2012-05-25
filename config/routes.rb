@@ -34,5 +34,5 @@ Lelylan::Application.routes.draw do
   # sample resources
   resources :pizzas, defaults: { format: "json" }
   resources :pastas, defaults: { format: "json" }
-  resources :terceiros, defaults: { format: "json" }
+  resources :terceiros
 end
