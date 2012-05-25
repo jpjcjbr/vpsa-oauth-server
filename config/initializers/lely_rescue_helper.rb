@@ -7,6 +7,8 @@ module Lelylan
       end
 
       def json_parse_error(e)
+        puts e.backtrace
+        print e.backtrace
         redirect_to root_path, alert: "Json not valid"
       end
 
