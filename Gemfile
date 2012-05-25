@@ -13,6 +13,8 @@ gem 'email_validator'
 gem 'chronic'
 gem 'jquery-rails'
 
+gem 'httparty'
+
 gem 'rake', '0.8.7'
 
 group :development, :test do
