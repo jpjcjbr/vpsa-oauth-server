@@ -35,4 +35,7 @@ Lelylan::Application.routes.draw do
   resources :pizzas, defaults: { format: "json" }
   resources :pastas, defaults: { format: "json" }
   resources :terceiros
+  resources :entidades
+  resources :pedidos
+  resources :produtos
 end
