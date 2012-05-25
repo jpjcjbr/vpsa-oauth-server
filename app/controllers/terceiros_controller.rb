@@ -1,5 +1,5 @@
 class TerceirosController < ApplicationController
-  before_filter :oauth_authorized
+
     
   def index    
     render :json => HTTParty.get('https://www.vpsa.com.br/vpsa/rest/externo/showroom/terceiros')
