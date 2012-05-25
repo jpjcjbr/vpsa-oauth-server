@@ -1,9 +1,5 @@
 Lelylan::Application.routes.draw do
 
-  get "terceiros/index"
-
-  get "terceiros/show"
-
   namespace :oauth do
     get    "authorization" => "oauth_authorize#show", defaults: { format: "html" }
     post   "authorization" => "oauth_authorize#create", defaults: { format: "html" }
@@ -38,5 +34,5 @@ Lelylan::Application.routes.draw do
   # sample resources
   resources :pizzas, defaults: { format: "json" }
   resources :pastas, defaults: { format: "json" }
-
+  resources :terceiros, defaults: { format: "json" }
 end
