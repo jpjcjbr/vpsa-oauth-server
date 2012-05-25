@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  before_filter :authenticate
+  # before_filter :authenticate
   helper_method :current_user
   helper_method :admin_does_not_exist
 
