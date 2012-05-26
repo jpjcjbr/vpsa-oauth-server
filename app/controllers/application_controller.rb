@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
       print '<<<<<<<<<<<<< format' << request.format
       
       if api_request
+        print '<<<<<<<< api request'
         # oauth_authorized   # uncomment to make all json API protected
       else
         session_auth
