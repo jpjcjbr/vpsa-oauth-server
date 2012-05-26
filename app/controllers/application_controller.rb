@@ -74,7 +74,7 @@ class ApplicationController < ActionController::Base
       
       print '<<<<<<<<<<<<<<<<<<<<<< normalize\n'
       # Token in the body
-      if (json_body and @body[:token])
+      if (@body[:token] and json_body)
         print '<<<<<<<<<<<<<<<<<<<<<< json esta no body'
         params[:token] = @body[:token]
       end
