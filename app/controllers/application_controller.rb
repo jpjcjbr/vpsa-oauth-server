@@ -71,12 +71,16 @@ class ApplicationController < ActionController::Base
     end
 
     def normalize_token
+      
+      print '<<<<<<<<<<<<<<<<<<<<<< normalize\n'
       # Token in the body
       if (json_body and @body[:token])
+              print '<<<<<<<<<<<<<<<<<<<<<< json esta no body\n'
         params[:token] = @body[:token]
       end
       # Token in the header
       if request.env["Authorization"]
+                      print '<<<<<<<<<<<<<<<<<<<<<< json esta no authorization\n'
         params[:token] = request.env["Authorization"].split(" ").last
       end
     end
