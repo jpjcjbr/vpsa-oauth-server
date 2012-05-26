@@ -80,9 +80,11 @@ class ApplicationController < ActionController::Base
       end
       # Token in the header
       if request.env["Authorization"]
-                      print '<<<<<<<<<<<<<<<<<<<<<< json esta no authorization\n'
+        print '<<<<<<<<<<<<<<<<<<<<<< json esta no authorization\n'
         params[:token] = request.env["Authorization"].split(" ").last
       end
+      
+      print '<<<<<<<<<<<<<<<<<<<<<< normalize_token'
     end
 
     def admin_does_not_exist
