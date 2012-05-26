@@ -75,9 +75,11 @@ class ApplicationController < ActionController::Base
       print '<<<<<<<<<<<<<<<<<<<<<< normalize\n'
       # Token in the body
       if (json_body and @body[:token])
-              print '<<<<<<<<<<<<<<<<<<<<<< json esta no body\n'
+        print '<<<<<<<<<<<<<<<<<<<<<< json esta no body'
         params[:token] = @body[:token]
       end
+      
+      print '<<<<<<<<<<<<<<<<<<<<<< depois da verificacao do body'
       # Token in the header
       if request.env["Authorization"]
         print '<<<<<<<<<<<<<<<<<<<<<< json esta no authorization\n'
