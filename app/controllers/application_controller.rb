@@ -18,6 +18,8 @@ class ApplicationController < ActionController::Base
     end
 
     def authenticate
+      print '<<<<<<<<<<<<< format' << request.format
+      
       if api_request
         # oauth_authorized   # uncomment to make all json API protected
       else
