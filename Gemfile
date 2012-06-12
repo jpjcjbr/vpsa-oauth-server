@@ -22,6 +22,7 @@ group :development, :test do
   gem 'cucumber-rails', :require => false
   gem 'steak'
   gem 'capybara'
+  gem "nokogiri", "~> 1.5.0"
   gem 'selenium-client'
   gem 'selenium-webdriver'
   gem 'launchy'
