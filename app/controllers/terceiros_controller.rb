@@ -2,12 +2,11 @@ class TerceirosController < ApplicationController
   before_filter :oauth_authorized
     
   def index
-    print '<<<<<<<<<<<<<<<< terceiro/index'
-    render :json => HTTParty.get('https://www.vpsa.com.br/vpsa/rest/externo/showroom/terceiros')
+    render :json => HTTParty.get('https://www.vpsa.com.br/vpsa/rest/externo/showroom/terceiros'), :callback => params[:callback] 
   end
 
   def show
-    render :json => HTTParty.get('https://www.vpsa.com.br/vpsa/rest/externo/showroom/terceiros/' << params[:id].to_s)
+    render :json => HTTParty.get('https://www.vpsa.com.br/vpsa/rest/externo/showroom/terceiros/' << params[:id].to_s), :callback => params[:callback] 
   end
 
 end

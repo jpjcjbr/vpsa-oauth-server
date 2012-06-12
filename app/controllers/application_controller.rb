@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def authenticate_vpsa_user
+      vpsa_user_session_auth
+    end
+
     def api_request
       json?
     end
@@ -42,8 +46,24 @@ class ApplicationController < ActionController::Base
       return @current_user
     end
 
+    def vpsa_user_session_auth
+      unless current_vpsa_user_id
+        session[:back] = request.url
+        redirect_to(vpsa_log_in_path) and return false
+      end
+      return true
+    end
+    
     def current_user
       @current_user
+    end
+    
+    def current_vpsa_user_uri
+      request.url + '/vpsa_users/' + current_vpsa_user_id.to_s if current_vpsa_user_id
+    end
+    
+    def current_vpsa_user_id
+      session[:vpsa_user_id]
     end
 
     def oauth_authorized

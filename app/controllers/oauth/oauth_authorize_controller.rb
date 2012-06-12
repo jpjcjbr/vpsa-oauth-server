@@ -1,6 +1,7 @@
 class Oauth::OauthAuthorizeController < ApplicationController
 
-  before_filter :authenticate
+  skip_before_filter :authenticate
+  before_filter :authenticate_vpsa_user
   before_filter :normalize_scope
   before_filter :find_client
   before_filter :check_scope          # check if the access is authorized
@@ -20,13 +21,13 @@ class Oauth::OauthAuthorizeController < ApplicationController
 
     # section 4.1.1 - authorization code flow
     if params[:response_type] == "code"
-      @authorization = OauthAuthorization.create(client_uri: @client.uri, resource_owner_uri: current_user.uri, scope: params[:scope])
+      @authorization = OauthAuthorization.create(client_uri: @client.uri, resource_owner_uri: current_vpsa_user_uri, scope: params[:scope])
       redirect_to authorization_redirect_uri(@client, @authorization, params[:state])
     end
 
     # section 4.2.1 - implicit grant flow
     if params[:response_type] == "token"
-      @token = OauthToken.create(client_uri: @client.uri, resource_owner_uri: current_user.uri, scope: params[:scope])
+      @token = OauthToken.create(client_uri: @client.uri, resource_owner_uri: current_vpsa_user_uri, scope: params[:scope])
       redirect_to implicit_redirect_uri(@client, @token, params[:state])
     end
   end
@@ -59,13 +60,13 @@ class Oauth::OauthAuthorizeController < ApplicationController
     end
 
     def access_blocked?
-      access = OauthAccess.find_or_create_by(:client_uri => @client.uri, resource_owner_uri: current_user.uri)
+      access = OauthAccess.find_or_create_by(:client_uri => @client.uri, resource_owner_uri: current_vpsa_user_uri)
       access_blocked if access.blocked?
     end
     
     def token_blocked?
       if params[:response_type] == "token"
-        @token = OauthToken.exist(@client.uri, current_user.uri, params[:scope]).first
+        @token = OauthToken.exist(@client.uri, current_vpsa_user_uri, params[:scope]).first
         token_blocked if @token and @token.blocked?
       end
     end
@@ -73,7 +74,7 @@ class Oauth::OauthAuthorizeController < ApplicationController
     # @only refresh token for implicit flow
     def refresh_token
       if @token
-        @token = OauthToken.create(client_uri: @client.uri, resource_owner_uri: current_user.uri, scope: params[:scope])
+        @token = OauthToken.create(client_uri: @client.uri, resource_owner_uri: current_vpsa_user_uri, scope: params[:scope])
         redirect_to implicit_redirect_uri(@client, @token, params[:state]) and return
       end
     end
