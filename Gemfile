@@ -39,4 +39,5 @@ group :development, :test do
   gem 'delorean'
   gem 'rspec-set'
   gem 'savon_spec'
+  gem "mocha", :require => false
 end

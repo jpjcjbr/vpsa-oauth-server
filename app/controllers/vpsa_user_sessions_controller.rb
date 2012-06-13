@@ -8,6 +8,11 @@ class VpsaUserSessionsController < ApplicationController
   def create
     # TODO: logar no VPSA
     base = LicenciamentoClient.get_base(params[:cnpj])
+    unless base
+      flash.now.alert = "CNPJ nao encontrado"
+      render "new" and return false
+    end
+    session[:vpsa_user_base] = base
     session[:vpsa_user_id] = 1
     redirect_to session[:back]
     session[:back] = nil
