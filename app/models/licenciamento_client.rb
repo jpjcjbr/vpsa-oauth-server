@@ -13,7 +13,7 @@ class LicenciamentoClient
 
   def self.client
     @@client ||= Savon::Client.new do
-      wsdl.endpoint = "https://www.vpsa.com.br/licenciamento/service/serviceBase"
+      wsdl.endpoint = VpsaUrls.env['licenciamento_endpoint']
       wsdl.namespace = "http://base.service.vpsa.com.br/"
     end
   end

@@ -1,0 +1,8 @@
+development:
+  licenciamento_endpoint: https://www.vpsa.com.br/licenciamento/service/serviceBase
+
+test:
+  licenciamento_endpoint: https://www.vpsa.com.br/licenciamento/service/serviceBase
+    
+production:
+  licenciamento_endpoint: https://www.vpsa.com.br/licenciamento/service/serviceBase

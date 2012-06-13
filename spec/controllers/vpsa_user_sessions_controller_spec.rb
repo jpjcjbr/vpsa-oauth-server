@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'mocha'
 
 describe VpsaUserSessionsController do
 
@@ -10,7 +9,7 @@ describe VpsaUserSessionsController do
     end
 
     def do_create_default
-      LicenciamentoClient.expects(:get_base).returns("base_teste")
+      LicenciamentoClient.stub!(:get_base).and_return("base_teste")
       do_create
     end
     
@@ -27,13 +26,13 @@ describe VpsaUserSessionsController do
      response.should redirect_to(url_redirect)
     end
     it "avisa quando o CNPJ informado nao e encontrado no Licenciamento" do
-     LicenciamentoClient.expects(:get_base).returns(nil)
+     LicenciamentoClient.stub!(:get_base).and_return(nil)
      do_create
      response.should render_template("new")
     end
     it "guarda a base na sessao do usuario" do
-     base = "base_123"
-     LicenciamentoClient.expects(:get_base).returns(base)
+     base = "base_12"
+     LicenciamentoClient.stub!(:get_base).and_return(base)
      do_create
      session[:vpsa_user_base].should be(base)
     end
