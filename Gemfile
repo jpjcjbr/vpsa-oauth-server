@@ -17,6 +17,8 @@ gem 'httparty'
 
 gem 'rake', '0.8.7'
 
+gem 'savon'
+  
 group :development, :test do
   gem 'rspec-rails', '2.4.1'
   gem 'cucumber-rails', :require => false
@@ -36,4 +38,5 @@ group :development, :test do
   gem 'watchr'
   gem 'delorean'
   gem 'rspec-set'
+  gem 'savon_spec'
 end

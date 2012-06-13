@@ -21,6 +21,8 @@ RSpec.configure do |config|
   # Include time travel methods
   config.include Delorean
 
+  config.include Savon::Spec::Macros
+
   # Mock library
   config.mock_with :rspec
 
