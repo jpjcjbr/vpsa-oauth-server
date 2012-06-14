@@ -1,4 +1,4 @@
-class VpsaUser
+class UsuarioVpsa
     
   extend Savon::Model
   
