@@ -1,8 +1,11 @@
 development:
   licenciamento_endpoint: https://www.vpsa.com.br/licenciamento/service/serviceBase
+  usuario_endpoint: https://www.vpsa.com.br/vpsa/service/serviceUsuario
 
 test:
   licenciamento_endpoint: https://www.vpsa.com.br/licenciamento/service/serviceBase
+  usuario_endpoint: https://www.vpsa.com.br/vpsa/service/serviceUsuario
     
 production:
   licenciamento_endpoint: https://www.vpsa.com.br/licenciamento/service/serviceBase
+  usuario_endpoint: https://www.vpsa.com.br/vpsa/service/serviceUsuario
