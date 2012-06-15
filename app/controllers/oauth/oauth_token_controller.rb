@@ -34,7 +34,7 @@ class Oauth::OauthTokenController < ApplicationController
 
     # section 4.3.1 (password credentials flow)
     if @body[:grant_type] == "password"
-      @token = OauthToken.create(client_uri: @client.uri, resource_owner_uri: @resource_owner.uri, scope: @body[:scope])
+      @token = OauthToken.create(client_uri: @client.uri, resource_owner_uri: @resource_owner_uri, scope: @body[:scope])
       @refresh_token = OauthRefreshToken.create(access_token: @token.token)
       render "/oauth/token" and return
     end
@@ -118,11 +118,14 @@ class Oauth::OauthTokenController < ApplicationController
 
     def find_resource_owner
       if @body[:grant_type] == "password"
-        @resource_owner = User.authenticate(@body[:username], @body[:password])
-        @resource_owner_uri = @resource_owner.uri if @resource_owner
+        @base = BaseLicenciamento.find(@body[:cnpj])
+        if @base
+          @resource_owner = UsuarioVpsa.find(@body[:login], @body[:password], @base)
+          @resource_owner_uri = @resource_owner[:id] if @resource_owner
+        end
         message = "notifications.oauth.resource_owner.not_found"
-        info = { username: @body[:username] }
-        render_422 message, info unless @resource_owner
+        info = { login: @body[:login] }
+        render_422 message, info unless @base && @resource_owner
       end
     end
 
@@ -168,7 +171,7 @@ class Oauth::OauthTokenController < ApplicationController
       access = OauthAccess.find_or_create_by(:client_uri => @client.uri, resource_owner_uri: @resource_owner_uri)
       message =  "notifications.oauth.resource_owner.blocked_client"
       info = { client_id: @body[:client_id] }
-      render_422 message, info if access.blocked
+      render_422 message, info if access.blocked?
     end
 
     # visualization

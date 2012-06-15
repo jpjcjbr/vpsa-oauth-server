@@ -16,8 +16,9 @@ feature "OauthTokenController" do
   before { @scope = Factory(:scope_pizzas_read) }
   before { @scope = Factory(:scope_pizzas_all) }
 
+  before { stub_vpsa_calls }
+  
   context "Authorization token flow" do
-
     let(:attributes) { { 
       grant_type: "authorization_code",
       client_id: client.uri,
@@ -78,7 +79,8 @@ feature "OauthTokenController" do
       grant_type: "password",
       client_id: client.uri,
       client_secret: client.secret,
-      username: user[:login],
+      cnpj: user[:cnpj],
+      login: user[:login],
       password: user[:password],
       scope: write_scope 
     } }
@@ -107,6 +109,14 @@ feature "OauthTokenController" do
 
     context "when not valid" do
       scenario "fails with not valid user password" do
+        UsuarioVpsa.stub!(:find).and_return(nil)
+        attributes.merge!(password: "not_existing")
+        create_token_uri(attributes)
+        page.should have_content "User not found"
+      end
+      
+      scenario "fails with not valid user password (quando a base nao e encontrada)" do
+        BaseLicenciamento.stub!(:find).and_return(nil)
         attributes.merge!(password: "not_existing")
         create_token_uri(attributes)
         page.should have_content "User not found"

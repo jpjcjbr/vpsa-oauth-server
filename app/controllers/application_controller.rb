@@ -97,5 +97,4 @@ class ApplicationController < ActionController::Base
     def admin_does_not_exist
       User.where(admin: true).first.nil?
     end
-
 end
