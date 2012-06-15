@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
     end
     
     def current_vpsa_user_uri
-      request.url + '/vpsa_users/' + current_vpsa_user_id.to_s if current_vpsa_user_id
+      current_vpsa_user_id.to_s if current_vpsa_user_id
     end
     
     def current_vpsa_user_id
@@ -73,11 +73,10 @@ class ApplicationController < ActionController::Base
       normalize_token
       
       @token = OauthToken.where(token: params[:token]).all_in(scope: [action]).first
-      
       if @token.nil? or @token.blocked?
         render text: "Unauthorized access.", status: 401
         return false
-      else 
+      else
         access = OauthAccess.where(client_uri: @token.client_uri , resource_owner_uri: @token.resource_owner_uri).first
         access.accessed!
       end

@@ -12,13 +12,13 @@ class OauthToken
   field :scope, type: Array                   # scope accessible with token
   field :expire_at, type: Time, default: nil  # token expiration
   field :blocked, type: Time, default: nil    # access token block (if client is blocked)
-
+  
   before_create :random_token
   before_create :random_refresh_token
   before_create :create_expiration
 
   validates :client_uri, presence: true, url: true
-  validates :resource_owner_uri, presence: true, url: true
+  validates :resource_owner_uri, presence: true
 
 
   # Block the resource owner delegation to a specific client

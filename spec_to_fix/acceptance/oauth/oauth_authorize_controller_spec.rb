@@ -90,13 +90,13 @@ feature "OauthAuthorizeController" do
       end
 
       scenario "fails #grant" do
-        page.find("#grant").fill_in("scope", with: "pizzas/create")
+        page.find("#grant").fill_in("scope", with => "pizzas/create")
         click_button("Grant")
         page.should have_content("Client not authorized")
       end
 
       scenario "fails #deny" do
-        page.find("#deny").fill_in("scope", with: "pizzas/create")
+        page.find("#deny").fill_in("scope", with => "pizzas/create")
         click_button("Deny")
         page.should have_content("Client not authorized")
       end
@@ -236,5 +236,6 @@ feature "OauthAuthorizeController" do
     end
     
     after { use_default }
+    
   end
 end

@@ -6,8 +6,10 @@ module SettingsHelper
   ANOTHER_HOST = "http://www.example.com"
 
   # resources
-  USER_URI            = HOST + "/users/example"
-  ANOTHER_USER_URI    = HOST + "/users/another"
+  VPSA_USER_ID        = "123"
+  USER_URI            = VPSA_USER_ID
+  ANOTHER_VPSA_USER_ID= "456"
+  ANOTHER_USER_URI    = ANOTHER_VPSA_USER_ID
   ADMIN_URI           = HOST + "/users/admin"
   CLIENT_URI          = HOST + "/users/alice/client/lelylan"
   ANOTHER_CLIENT_URI  = HOST + "/users/alice/client/riflect"

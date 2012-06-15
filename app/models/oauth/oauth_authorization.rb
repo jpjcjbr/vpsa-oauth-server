@@ -13,7 +13,7 @@ class OauthAuthorization
   field :blocked, type: Time, default: nil    # authorization block (if client is blocked)
 
   validates :client_uri, presence: true, url: true
-  validates :resource_owner_uri, presence: true, url: true
+  validates :resource_owner_uri, presence: true
 
   before_create :random_code
   before_create :create_expiration

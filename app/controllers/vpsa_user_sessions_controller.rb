@@ -19,7 +19,7 @@ class VpsaUserSessionsController < ApplicationController
       render "new" and return false
     end
     session[:vpsa_user_id] = vpsa_user[:id]
-    
+    session[:back] ||= vpsa_log_in_path
     redirect_to session[:back]
     session[:back] = nil
   end

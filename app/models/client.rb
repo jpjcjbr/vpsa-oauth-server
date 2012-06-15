@@ -26,7 +26,7 @@ class Client
 
   validates :name, presence: true
   validates :uri, presence: true, url: true
-  validates :created_from, presence: true, url: true
+  validates :created_from, presence: true
   validates :redirect_uri, presence: true, url: true
 
 
