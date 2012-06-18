@@ -1,11 +1,21 @@
 development:
   licenciamento_endpoint: https://www.vpsa.com.br/licenciamento/service/serviceBase
   usuario_endpoint: https://www.vpsa.com.br/vpsa/service/serviceUsuario
-
+  clientes_url: https://www.vpsa.com.br/vpsa/rest/externo/{base}/terceiros/
+  entidades_url: https://www.vpsa.com.br/vpsa/rest/externo/{base}/entidades/
+  pedidos_url: https://www.vpsa.com.br/estoque/rest/externo/{base}/{entidade}/pedidos/
+  produtos_url: https://www.vpsa.com.br/estoque/rest/externo/{base}/{entidade}/produtos/
 test:
   licenciamento_endpoint: https://www.vpsa.com.br/licenciamento/service/serviceBase
   usuario_endpoint: https://www.vpsa.com.br/vpsa/service/serviceUsuario
-    
+  clientes_url: https://www.vpsa.com.br/vpsa/rest/externo/{base}/terceiros/
+  entidades_url: https://www.vpsa.com.br/vpsa/rest/externo/{base}/entidades/
+  pedidos_url: https://www.vpsa.com.br/estoque/rest/externo/{base}/{entidade}/pedidos/
+  produtos_url: https://www.vpsa.com.br/estoque/rest/externo/{base}/{entidade}/produtos/
 production:
   licenciamento_endpoint: https://www.vpsa.com.br/licenciamento/service/serviceBase
   usuario_endpoint: https://www.vpsa.com.br/vpsa/service/serviceUsuario
+  clientes_url: https://www.vpsa.com.br/vpsa/rest/externo/{base}/terceiros/
+  entidades_url: https://www.vpsa.com.br/vpsa/rest/externo/{base}/entidades/
+  pedidos_url: https://www.vpsa.com.br/estoque/rest/externo/{base}/{entidade}/pedidos/
+  produtos_url: https://www.vpsa.com.br/estoque/rest/externo/{base}/{entidade}/produtos/

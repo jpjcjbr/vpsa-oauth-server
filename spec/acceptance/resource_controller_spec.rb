@@ -10,12 +10,12 @@ feature "ResourceController" do
     before { @token.destroy }
 
     scenario ".index" do
-      visit "/entidades?token=" + @token_value
+      visit "/api/entidades?token=" + @token_value
       should_not_be_authorized
     end
 
     scenario ".show" do
-      visit "/entidades/0?token=" + @token_value
+      visit "/api/entidades/0?token=" + @token_value
       should_not_be_authorized
     end
   end
@@ -25,13 +25,13 @@ feature "ResourceController" do
     before { @token_json  = {token: @token_value}.to_json }
 
     scenario ".index" do
-      visit "/entidades?token=" + @token_value
+      visit "/api/entidades?token=" + @token_value
       page.status_code.should eq(200)
       lambda{ JSON.parse(body) }.should_not raise_error
     end
 
     scenario ".show" do
-      visit "/entidades/0?token=" + @token_value
+      visit "/api/entidades/0?token=" + @token_value
       should_not_be_authorized
     end
   end
@@ -42,13 +42,13 @@ feature "ResourceController" do
     before { @token_json  = {token: @token_value}.to_json }
 
     scenario ".index" do
-      visit "/entidades?token=" + @token_value
+      visit "/api/entidades?token=" + @token_value
       page.status_code.should eq(200)
       lambda{ JSON.parse(body) }.should_not raise_error
     end
 
     scenario ".show" do
-      visit "/entidades/1?token=" + @token_value
+      visit "/api/entidades/1?token=" + @token_value
       page.status_code.should eq(200)
       lambda{ JSON.parse(body) }.should_not raise_error
     end
@@ -60,13 +60,13 @@ feature "ResourceController" do
     before { @token_json  = {token: @token_value}.to_json }
 
     scenario ".index" do
-      visit "/entidades?token=" + @token_value
+      visit "/api/entidades?token=" + @token_value
       page.status_code.should eq(200)
       lambda{ JSON.parse(body) }.should_not raise_error
     end
 
     scenario ".show" do
-      visit "/entidades/1?token=" + @token_value
+      visit "/api/entidades/1?token=" + @token_value
       page.status_code.should eq(200)
       lambda{ JSON.parse(body) }.should_not raise_error
     end
@@ -76,7 +76,7 @@ feature "ResourceController" do
       before { page.driver.hacked_env.merge!(@headers) }
 
       scenario ".index" do
-        visit "/entidades"
+        visit "/api/entidades"
         page.status_code.should eq(200)
         lambda{ JSON.parse(body) }.should_not raise_error
       end

@@ -72,7 +72,8 @@ class ApplicationController < ActionController::Base
 
     def oauth_authorized
       action = params[:controller] + "/" + params[:action]
-
+      action = action[4, action.length] if action.start_with? 'api/'
+      
       normalize_token
       
       @token = OauthToken.where(token: params[:token]).all_in(scope: [action]).first
@@ -101,6 +102,14 @@ class ApplicationController < ActionController::Base
     def parse_vpsa_user_uri
       @vpsa_user_base = @token.resource_owner_uri.split('/')[0]
       @vpsa_user_id = @token.resource_owner_uri.split('/')[1]
+    end
+    
+    def url_com_base url
+      url.sub('{base}', @vpsa_user_base) if @vpsa_user_base
+    end
+    
+    def url_com_base_e_entidade url
+      url_com_base(url).sub('{entidade}', params[:id_entidade]) if params[:id_entidade]
     end
     
     def admin_does_not_exist
