@@ -121,7 +121,7 @@ class Oauth::OauthTokenController < ApplicationController
         @base = BaseLicenciamento.find(@body[:cnpj])
         if @base
           @resource_owner = UsuarioVpsa.find(@body[:login], @body[:password], @base)
-          @resource_owner_uri = @resource_owner[:id] if @resource_owner
+          @resource_owner_uri = @base + "/" + @resource_owner[:id] if @resource_owner
         end
         message = "notifications.oauth.resource_owner.not_found"
         info = { login: @body[:login] }

@@ -16,12 +16,12 @@ module HelperMethods
   end
 
   def stub_vpsa_calls
-    BaseLicenciamento.stub!(:find).and_return("base_teste")
-    UsuarioVpsa.stub!(:find).and_return({:id => USER_URI})
+    BaseLicenciamento.stub!(:find).and_return(BASE)
+    UsuarioVpsa.stub!(:find).and_return({:id => VPSA_USER_ID})
   end
 
   def sleep_after_click
-    sleep(2)
+    sleep(1)
   end
 
   # Driver switch

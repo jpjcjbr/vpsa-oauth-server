@@ -77,7 +77,7 @@ describe Client do
     end
 
     context "with partial scope" do
-      let(:scope) { ["pizzas/show", "pizzas/create"] }
+      let(:scope) { ["entidades/show", "entidades/create"] }
       subject { Client.where_scope(scope).first }
       it { should_not be_nil }
     end
@@ -117,23 +117,23 @@ describe Client do
 
     before { @client = Factory(:client) }
     before { @read_client = Factory(:client_read) }
-    before { @scope = Factory(:scope_pizzas_all) }
-    before { @scope_read = Factory(:scope_pizzas_read, values: ["pizzas/show"]) }
-    before { Client.sync_clients_with_scope("pizzas/read") }
+    before { @scope = Factory(:scope_entidades_all) }
+    before { @scope_read = Factory(:scope_entidades_read, values: ["entidades/show"]) }
+    before { Client.sync_clients_with_scope("entidades/read") }
 
     context "with indirect scope" do
       subject { @client.reload.scope_values }
-      it { should include "pizzas/show" }
-      it { should include "pizzas/create" }
-      it { should include "pizzas/update" }
-      it { should include "pizzas/destroy" }
-      it { should_not include "pizzas/index" }
+      it { should include "entidades/show" }
+      it { should include "entidades/create" }
+      it { should include "entidades/update" }
+      it { should include "entidades/destroy" }
+      it { should_not include "entidades/index" }
     end
 
     context "with direct scope" do
       subject { @read_client.reload.scope_values }
-      it { should include "pizzas/show" }
-      it { should_not include "pizzas/index" }
+      it { should include "entidades/show" }
+      it { should_not include "entidades/index" }
     end
   end
 

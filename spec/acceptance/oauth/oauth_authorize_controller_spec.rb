@@ -9,11 +9,11 @@ feature "OauthAuthorizeController" do
   let(:client)      { Factory(:client) }
   let(:client_read) { Factory(:client_read) }
   let(:access)      { Factory(:oauth_access) }
-  let(:write_scope) { "pizzas" }
-  let(:read_scope)  { "pizzas/read" }
+  let(:write_scope) { "entidades" }
+  let(:read_scope)  { "entidades/read" }
 
-  before { @scope = Factory(:scope_pizzas_read) }
-  before { @scope = Factory(:scope_pizzas_all) }
+  before { @scope = Factory(:scope_entidades_read) }
+  before { @scope = Factory(:scope_entidades_all) }
 
   before { stub_vpsa_calls }
 
@@ -95,13 +95,13 @@ feature "OauthAuthorizeController" do
       end
 
       scenario "fails #grant" do
-        page.find("#grant").fill_in("scope", with: "pizzas/create")
+        page.find("#grant").fill_in("scope", with: "entidades/create")
         click_button("Grant")
         page.should have_content("Client not authorized")
       end
 
       scenario "fails #deny" do
-        page.find("#deny").fill_in("scope", with: "pizzas/create")
+        page.find("#deny").fill_in("scope", with: "entidades/create")
         click_button("Deny")
         page.should have_content("Client not authorized")
       end

@@ -10,42 +10,28 @@ feature "ResourceController" do
     before { @token.destroy }
 
     scenario ".index" do
-      visit "/pizzas?token=" + @token_value
+      visit "/entidades?token=" + @token_value
       should_not_be_authorized
     end
 
     scenario ".show" do
-      visit "/pizzas/0?token=" + @token_value
-      should_not_be_authorized
-    end
-
-    scenario ".create" do
-      page.driver.post("/pizzas", @token_json)
-      should_not_be_authorized
-    end
-
-    scenario ".update" do
-      page.driver.put("/pizzas/0", @token_json)
-      should_not_be_authorized
-    end
-
-    scenario ".destroy" do
-      page.driver.delete("/pizzas/0", @token_json)
+      visit "/entidades/0?token=" + @token_value
       should_not_be_authorized
     end
   end
 
   context "with single action accesses" do
-    before { @token_value = Factory(:oauth_token, scope: ["pizzas/index"]).token }
+    before { @token_value = Factory(:oauth_token, scope: ["entidades/index"]).token }
     before { @token_json  = {token: @token_value}.to_json }
 
     scenario ".index" do
-      visit "/pizzas?token=" + @token_value
-      page.should have_content "index"
+      visit "/entidades?token=" + @token_value
+      page.status_code.should eq(200)
+      lambda{ JSON.parse(body) }.should_not raise_error
     end
 
     scenario ".show" do
-      visit "/pizzas/0?token=" + @token_value
+      visit "/entidades/0?token=" + @token_value
       should_not_be_authorized
     end
   end
@@ -56,28 +42,15 @@ feature "ResourceController" do
     before { @token_json  = {token: @token_value}.to_json }
 
     scenario ".index" do
-      visit "/pizzas?token=" + @token_value
-      page.should have_content "index"
+      visit "/entidades?token=" + @token_value
+      page.status_code.should eq(200)
+      lambda{ JSON.parse(body) }.should_not raise_error
     end
 
     scenario ".show" do
-      visit "/pizzas/0?token=" + @token_value
-      page.should have_content "show"
-    end
-
-    scenario ".create" do
-      page.driver.post("/pizzas", @token_json)
-      should_not_be_authorized
-    end
-
-    scenario ".update" do
-      page.driver.put("/pizzas/0", @token_json)
-      should_not_be_authorized
-    end
-
-    scenario ".destroy" do
-      page.driver.delete("/pizzas/0", @token_json)
-      should_not_be_authorized
+      visit "/entidades/1?token=" + @token_value
+      page.status_code.should eq(200)
+      lambda{ JSON.parse(body) }.should_not raise_error
     end
   end
 
@@ -87,28 +60,15 @@ feature "ResourceController" do
     before { @token_json  = {token: @token_value}.to_json }
 
     scenario ".index" do
-      visit "/pizzas?token=" + @token_value
-      page.should have_content "index"
+      visit "/entidades?token=" + @token_value
+      page.status_code.should eq(200)
+      lambda{ JSON.parse(body) }.should_not raise_error
     end
 
     scenario ".show" do
-      visit "/pizzas/0?token=" + @token_value
-      page.should have_content "show"
-    end
-
-    scenario ".create" do
-      page.driver.post("/pizzas", @token_json)
-      page.should have_content "create"
-    end
-
-    scenario ".update" do
-      page.driver.put("/pizzas/0", @token_json)
-      page.should have_content "update"
-    end
-
-    scenario ".destroy" do
-      page.driver.delete("/pizzas/0", @token_json)
-      page.should have_content "destroy"
+      visit "/entidades/1?token=" + @token_value
+      page.status_code.should eq(200)
+      lambda{ JSON.parse(body) }.should_not raise_error
     end
 
     context "with token in the header" do
@@ -116,8 +76,9 @@ feature "ResourceController" do
       before { page.driver.hacked_env.merge!(@headers) }
 
       scenario ".index" do
-        visit "/pizzas"
-        page.should have_content "index"
+        visit "/entidades"
+        page.status_code.should eq(200)
+        lambda{ JSON.parse(body) }.should_not raise_error
       end
     end
   end

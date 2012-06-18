@@ -10,11 +10,11 @@ feature "OauthTokenController" do
   let(:client_read)   { Factory(:client_read) }
   let(:authorization) { Factory(:oauth_authorization) }
   let(:access)        { Factory(:oauth_access) }
-  let(:write_scope)   { "pizzas" }
-  let(:read_scope)    { "pizzas/read" }
+  let(:write_scope)   { "entidades" }
+  let(:read_scope)    { "entidades/read" }
 
-  before { @scope = Factory(:scope_pizzas_read) }
-  before { @scope = Factory(:scope_pizzas_all) }
+  before { @scope = Factory(:scope_entidades_read) }
+  before { @scope = Factory(:scope_entidades_all) }
 
   before { stub_vpsa_calls }
   

@@ -53,13 +53,13 @@ FactoryGirl.define do
     name "the client"
     created_from USER_URI
     redirect_uri REDIRECT_URI
-    scope ["pizzas"]
+    scope ["entidades"]
     scope_values ALL_SCOPE
   end
 
   factory :client_read, parent: :client do
     uri ANOTHER_CLIENT_URI
-    scope ["pizzas/read"]
+    scope ["entidades/read"]
     scope_values READ_SCOPE
   end
 
@@ -71,17 +71,17 @@ FactoryGirl.define do
 
   factory :scope do
     uri SCOPE_URI
-    name "pizzas"
+    name "entidades"
   end
 
-  factory :scope_pizzas_read, parent: :scope do
-    name "pizzas/read"
-    values ["pizzas/index", "pizzas/show"]
+  factory :scope_entidades_read, parent: :scope do
+    name "entidades/read"
+    values ["entidades/index", "entidades/show"]
   end
 
-  factory :scope_pizzas_all, parent: :scope do
-    name "pizzas"
-    values ["pizzas/read", "pizzas/create", "pizzas/update", "pizzas/destroy"]
+  factory :scope_entidades_all, parent: :scope do
+    name "entidades"
+    values ["entidades/read", "entidades/create", "entidades/update", "entidades/destroy"]
   end
 
   factory :scope_pastas_read, parent: :scope do
@@ -96,12 +96,12 @@ FactoryGirl.define do
 
   factory :scope_read, parent: :scope do
     name "read"
-    values ["pizzas/read", "pastas/read"]
+    values ["entidades/read", "pastas/read"]
   end
 
   factory :scope_all, parent: :scope do
     name "all"
-    values ["pizzas", "pastas"]
+    values ["entidades", "pastas"]
   end
 
 end

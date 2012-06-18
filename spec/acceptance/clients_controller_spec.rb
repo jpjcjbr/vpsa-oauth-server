@@ -10,8 +10,8 @@ feature "ClientsController" do
   before { @admin = Factory(:admin) }
   before { @client = Factory(:client) }
   before { @client_not_owned = Factory(:client_not_owned) }
-  before { @scope_read = Factory(:scope_pizzas_read) }
-  before { @scope_all = Factory(:scope_pizzas_all) }
+  before { @scope_read = Factory(:scope_entidades_read) }
+  before { @scope_all = Factory(:scope_entidades_all) }
 
 
   context ".index" do

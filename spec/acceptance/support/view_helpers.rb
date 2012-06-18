@@ -28,7 +28,7 @@ module ViewHelperMethods
     page.should have_content(client.site_uri)
     page.should have_content(client.redirect_uri)
     page.should have_content(client.scope_values_pretty)
-    page.should have_content("pizzas/create")
+    page.should have_content("entidades/create")
     page.should have_content(client.info)
   end
 
@@ -36,13 +36,13 @@ module ViewHelperMethods
     fill_in "Name", with: name
     fill_in "Site", with: HOST
     fill_in "Redirect", with: REDIRECT_URI
-    fill_in "Scope", with: "pizzas"
+    fill_in "Scope", with: "entidades"
     fill_in "Info", with: "This is an example app"
   end
 
   # bearer token
   def should_not_be_authorized
-    page.status_code.should == 401
+    page.status_code.should eq(401)
     page.should have_content "Unauthorized access"
   end
 

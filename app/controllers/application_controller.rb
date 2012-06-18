@@ -59,15 +59,18 @@ class ApplicationController < ActionController::Base
     end
     
     def current_vpsa_user_uri
-      current_vpsa_user_id.to_s if current_vpsa_user_id
+      current_vpsa_user_base.to_s + "/" + current_vpsa_user_id.to_s if current_vpsa_user_base && current_vpsa_user_id
     end
     
     def current_vpsa_user_id
       session[:vpsa_user_id]
     end
+    
+    def current_vpsa_user_base
+      session[:vpsa_user_base]
+    end
 
     def oauth_authorized
-
       action = params[:controller] + "/" + params[:action]
 
       normalize_token
@@ -77,6 +80,7 @@ class ApplicationController < ActionController::Base
         render text: "Unauthorized access.", status: 401
         return false
       else
+        parse_vpsa_user_uri
         access = OauthAccess.where(client_uri: @token.client_uri , resource_owner_uri: @token.resource_owner_uri).first
         access.accessed!
       end
@@ -93,7 +97,12 @@ class ApplicationController < ActionController::Base
         params[:token] = request.env["Authorization"].split(" ").last
       end
     end
-
+    
+    def parse_vpsa_user_uri
+      @vpsa_user_base = @token.resource_owner_uri.split('/')[0]
+      @vpsa_user_id = @token.resource_owner_uri.split('/')[1]
+    end
+    
     def admin_does_not_exist
       User.where(admin: true).first.nil?
     end

@@ -182,31 +182,31 @@ feature "ScopesController" do
 
           before do 
             Scope.destroy_all
-            @scope = Factory(:scope_pizzas_all)
-            @scope_read = Factory(:scope_pizzas_read)
+            @scope = Factory(:scope_entidades_all)
+            @scope_read = Factory(:scope_entidades_read)
             @client = Factory(:client)
             @client_read = Factory(:client_read)
           end
 
           before do
             visit "/scopes/" + @scope_read.id.as_json +  "/edit"
-            fill_scope("pizzas/read", "pizzas/show")
+            fill_scope("entidades/read", "entidades/show")
             click_button 'Update Scope'
           end
 
           context "with indirect client" do
             subject { @client.reload.scope_values }
-            it { should_not include "pizzas/index" }
-            it { should include "pizzas/show" }
-            it { should include "pizzas/create" }
-            it { should include "pizzas/update" }
-            it { should include "pizzas/destroy" }
+            it { should_not include "entidades/index" }
+            it { should include "entidades/show" }
+            it { should include "entidades/create" }
+            it { should include "entidades/update" }
+            it { should include "entidades/destroy" }
           end
 
           context "with direct client" do
             subject { @client_read.reload.scope_values }
-            it { should_not include "pizzas/index" }
-            it { @client_read.reload.scope_values.should include "pizzas/show" }
+            it { should_not include "entidades/index" }
+            it { @client_read.reload.scope_values.should include "entidades/show" }
           end
         end
       end 

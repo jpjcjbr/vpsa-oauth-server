@@ -33,11 +33,8 @@ Lelylan::Application.routes.draw do
 
   root :to => "sessions#new"
 
-  # sample resources
-  resources :pizzas, defaults: { format: "json" }
-  resources :pastas, defaults: { format: "json" }
-  resources :terceiros
-  resources :entidades
-  resources :pedidos
-  resources :produtos
+  resources :terceiros, defaults: { format: "json" }
+  resources :entidades, defaults: { format: "json" }
+  resources :pedidos, defaults: { format: "json" }
+  resources :produtos, defaults: { format: "json" }
 end
