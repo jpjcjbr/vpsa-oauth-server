@@ -2,7 +2,7 @@ class UsuarioVpsa
     
   extend Savon::Model
   
-  endpoint VpsaUrls.env['usuario_endpoint']
+  endpoint VpsaConfig.urls['usuario_endpoint']
   namespace "http://cadastro.service.vpsa.com.br/"
 
   def self.find(login, senha, base)

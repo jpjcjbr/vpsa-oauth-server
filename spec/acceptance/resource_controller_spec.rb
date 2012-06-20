@@ -15,7 +15,7 @@ feature "ResourceController" do
     end
 
     scenario ".show" do
-      visit "/api/entidades/0?token=" + @token_value
+      visit "/api/entidades/1?token=" + @token_value
       should_not_be_authorized
     end
   end
@@ -31,7 +31,7 @@ feature "ResourceController" do
     end
 
     scenario ".show" do
-      visit "/api/entidades/0?token=" + @token_value
+      visit "/api/entidades/1?token=" + @token_value
       should_not_be_authorized
     end
   end

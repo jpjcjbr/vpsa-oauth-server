@@ -103,13 +103,15 @@ class ApplicationController < ActionController::Base
       @vpsa_user_base = @token.resource_owner_uri.split('/')[0]
       @vpsa_user_id = @token.resource_owner_uri.split('/')[1]
     end
-    
-    def url_com_base url
-      url.sub('{base}', @vpsa_user_base) if @vpsa_user_base
-    end
-    
-    def url_com_base_e_entidade url
-      url_com_base(url).sub('{entidade}', params[:id_entidade]) if params[:id_entidade]
+ 
+    def url_formatada_vpsa url_key
+      args = {
+        :url => VpsaConfig.urls[url_key], 
+        :base => @vpsa_user_base, 
+        :entidades => params[:entidades], :inicio => params[:inicio], :quantidade => params[:quantidade],
+        :quantidade_maxima => VpsaConfig.api['quantidade_maxima']
+      }
+      UrlVpsa.new(args).formatada
     end
     
     def admin_does_not_exist

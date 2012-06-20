@@ -2,7 +2,7 @@ class BaseLicenciamento
    
   extend Savon::Model
   
-  endpoint VpsaUrls.env['licenciamento_endpoint']
+  endpoint VpsaConfig.urls['licenciamento_endpoint']
   namespace "http://base.service.vpsa.com.br/"
 
   def self.find cnpj

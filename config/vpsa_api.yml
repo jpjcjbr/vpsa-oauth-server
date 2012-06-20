@@ -1,0 +1,6 @@
+development:
+  quantidade_maxima: 5
+test:
+  quantidade_maxima: 500
+production:
+  quantidade_maxima: 500
