@@ -1,4 +1,5 @@
 require 'rack/ssl'
+require 'syslog_logger'
 
 Lelylan::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
