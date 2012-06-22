@@ -58,6 +58,7 @@ GEM
       ffi (~> 1.0.6)
     chronic (0.3.0)
     configuration (1.2.0)
+    cpowell-SyslogLogger (1.4.1)
     cucumber (0.10.2)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.2)
@@ -215,6 +216,7 @@ DEPENDENCIES
   bson_ext
   capybara
   chronic
+  cpowell-SyslogLogger
   cucumber-rails
   database_cleaner
   delorean

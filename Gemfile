@@ -19,6 +19,10 @@ gem 'rake', '0.8.7'
 
 gem 'savon'
   
+group :production do
+  gem 'cpowell-SyslogLogger'
+end
+
 group :development, :test do
   gem 'rspec-rails', '2.4.1'
   gem 'cucumber-rails', :require => false
