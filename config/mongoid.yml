@@ -15,7 +15,7 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: oauth_development
+  database: oauth_dev
 
 test:
   <<: *defaults
@@ -23,9 +23,12 @@ test:
 
 # set these environment variables on your prod server
 production:
+  host: localhost
+  database: oauth_prod
   # host: <%= ENV['MONGOID_HOST'] %>
   # port: <%= ENV['MONGOID_PORT'] %>
   # username: <%= ENV['MONGOID_USERNAME'] %>
   # password: <%= ENV['MONGOID_PASSWORD'] %>
   # database: <%= ENV['MONGOID_DATABASE'] %>
-  uri: <%= ENV['MONGOLAB_URI'] %>
+  
+  #uri: <%= ENV['MONGOLAB_URI'] %>
