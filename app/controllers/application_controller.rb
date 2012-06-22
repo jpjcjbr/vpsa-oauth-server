@@ -108,6 +108,7 @@ class ApplicationController < ActionController::Base
       args = {
         :url => VpsaConfig.urls[url_key], 
         :base => @vpsa_user_base, 
+        :usuario => @vpsa_user_id,
         :entidades => params[:entidades], :inicio => params[:inicio], :quantidade => params[:quantidade],
         :quantidade_maxima => VpsaConfig.api['quantidade_maxima']
       }

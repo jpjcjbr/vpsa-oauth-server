@@ -32,6 +32,25 @@ describe UrlVpsa do
       end
     end
     
+    describe "filtro de usuario" do
+      it "adiciona o filtro se informado" do
+        args = {
+          :url => 'https://www.vpsa.com.br/rest/{base}/clientes',
+          :base => 'baseteste', :entidades => '1,2,5', :usuario => 1423,
+          :inicio => '23', :quantidade => '6', :quantidade_maxima => 10
+        }
+        UrlVpsa.new(args).formatada.include?('idUsuarioLogado=1423').should be_true
+      end
+      it "nao adiciona o filtro se nao foi informado" do
+        args = {
+          :url => 'https://www.vpsa.com.br/rest/{base}/clientes',
+          :base => 'baseteste', :entidades => '1,2,5',
+          :quantidade => '6', :quantidade_maxima => 10
+        }
+        UrlVpsa.new(args).formatada.include?('idUsuarioLogado').should be_false
+      end
+    end
+    
     describe "filtro de inicio" do
       it "adiciona o filtro se informado" do
         args = {

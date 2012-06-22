@@ -3,6 +3,7 @@ class UrlVpsa
   def initialize(args)
     @url = args[:url]
     @base = args[:base]
+    @usuario = args[:usuario]
     @entidades = args[:entidades]
     @inicio = args[:inicio]
     @quantidade = args[:quantidade]
@@ -11,6 +12,7 @@ class UrlVpsa
 
   def formatada
     url = url_com_base
+    url << filtro_usuario
     url << filtro_inicio
     url << filtro_quantidade
     url << filtro_entidades
@@ -22,9 +24,13 @@ class UrlVpsa
 	  @base ? @url.sub('{base}', @base) : @url
 	end
 
+	def filtro_usuario
+	  @usuario ? '?idUsuarioLogado=' + @usuario.to_s : ''
+	end
+
 	def filtro_inicio
 	  @inicio ||= '0'
-	  return '?inicio=' + @inicio
+	  return '&inicio=' + @inicio
 	end
 	
 	def filtro_quantidade
