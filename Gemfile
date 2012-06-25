@@ -4,6 +4,7 @@ source 'http://gems.github.com'
 
 gem 'rails', '3.0.5'
 gem 'mongoid', '2.0.0.beta.20'
+gem 'mongo_session_store-rails3'
 gem 'bson_ext'
 gem 'yajl-ruby'
 gem 'will_paginate'
