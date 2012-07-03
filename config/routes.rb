@@ -18,6 +18,10 @@ Lelylan::Application.routes.draw do
 
   namespace :api do
     resources :clientes, defaults: { format: "json" }, :only => [:index, :show]
+    resources :contas_pagar, defaults: { format: "json" }, :only => [:index, :show]
+    resources :contas_pagas, defaults: { format: "json" }, :only => [:index, :show]
+    resources :contas_receber, defaults: { format: "json" }, :only => [:index, :show]
+    resources :contas_recebidas, defaults: { format: "json" }, :only => [:index, :show]
     resources :entidades, defaults: { format: "json" }, :only => [:index, :show]
     resources :pedidos, defaults: { format: "json" }, :only => [:index, :show]
     resources :produtos, defaults: { format: "json" }, :only => [:index, :show]

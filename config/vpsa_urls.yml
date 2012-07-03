@@ -2,6 +2,10 @@ development:
   licenciamento_endpoint: https://www.vpsa.com.br/licenciamento/service/serviceBase
   usuario_endpoint: https://www.vpsa.com.br/vpsa/service/serviceUsuario
   clientes_url: https://www.vpsa.com.br/vpsa/rest/{base}/clientes/
+  contas_pagar_url: https://www.vpsa.com.br/vpsa/rest/{base}/contasPagar/
+  contas_pagas_url: https://www.vpsa.com.br/vpsa/rest/{base}/contasPagas/
+  contas_receber_url: https://www.vpsa.com.br/vpsa/rest/{base}/contasReceber/
+  contas_recebidas_url: https://www.vpsa.com.br/vpsa/rest/{base}/contasRecebidas/
   entidades_url: https://www.vpsa.com.br/vpsa/rest/{base}/entidades/
   pedidos_url: https://www.vpsa.com.br/estoque/rest/{base}/pedidos/
   produtos_url: https://www.vpsa.com.br/estoque/rest/{base}/produtos/
@@ -9,6 +13,10 @@ test:
   licenciamento_endpoint: https://www.vpsa.com.br/licenciamento/service/serviceBase
   usuario_endpoint: https://www.vpsa.com.br/vpsa/service/serviceUsuario
   clientes_url: https://www.vpsa.com.br/vpsa/rest/{base}/clientes/
+  contas_pagar_url: https://www.vpsa.com.br/vpsa/rest/{base}/contasPagar/
+  contas_pagas_url: https://www.vpsa.com.br/vpsa/rest/{base}/contasPagas/
+  contas_receber_url: https://www.vpsa.com.br/vpsa/rest/{base}/contasReceber/
+  contas_recebidas_url: https://www.vpsa.com.br/vpsa/rest/{base}/contasRecebidas/
   entidades_url: https://www.vpsa.com.br/vpsa/rest/{base}/entidades/
   pedidos_url: https://www.vpsa.com.br/estoque/rest/{base}/pedidos/
   produtos_url: https://www.vpsa.com.br/estoque/rest/{base}/produtos/
@@ -16,6 +24,10 @@ production:
   licenciamento_endpoint: https://www.vpsa.com.br/licenciamento/service/serviceBase
   usuario_endpoint: https://www.vpsa.com.br/vpsa/service/serviceUsuario
   clientes_url: https://www.vpsa.com.br/vpsa/rest/{base}/clientes/
+  contas_pagar_url: https://www.vpsa.com.br/vpsa/rest/{base}/contasPagar/
+  contas_pagas_url: https://www.vpsa.com.br/vpsa/rest/{base}/contasPagas/
+  contas_receber_url: https://www.vpsa.com.br/vpsa/rest/{base}/contasReceber/
+  contas_recebidas_url: https://www.vpsa.com.br/vpsa/rest/{base}/contasRecebidas/
   entidades_url: https://www.vpsa.com.br/vpsa/rest/{base}/entidades/
   pedidos_url: https://www.vpsa.com.br/estoque/rest/{base}/pedidos/
   produtos_url: https://www.vpsa.com.br/estoque/rest/{base}/produtos/
