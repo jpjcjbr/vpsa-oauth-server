@@ -3,13 +3,14 @@ class VpsaUserSessionsController < ApplicationController
   skip_before_filter :authenticate
 
   def new
+    render :layout => 'oauth'
   end
-
+  
   def create
     base = BaseLicenciamento.find(params[:cnpj])
     unless base
-      flash.now.alert = "CNPJ nao encontrado"
-      render "new" and return false
+      flash.now.alert = "CNPJ/CPF nao encontrado"
+      render "new", :layout => 'oauth' and return false
     end
     session[:vpsa_user_base] = base
     

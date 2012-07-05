@@ -1,0 +1,114 @@
+@color: #4d4d4d;
+@header-height: 130px;
+@space: 25px;
+
+@green-50: rgba(57, 181, 74, 0.5);
+@green: rgba(57, 181, 74, 1); 
+@red-15: rgba(193, 39, 45, 0.15);
+@red: rgba(193, 39, 45, 1);
+
+.fn-transition(@transition){
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  -ms-transition: @transition;
+  -o-transition: @transition;
+  transition: @transition;
+}
+
+body{
+  background: #E5E5E5;
+  font-family : "Trebuchet MS";
+}
+
+header{
+  height: @header-height;
+  vertical-align: bottom;
+  background: @color url(../images/accounts.svg) no-repeat 120px 5px;
+}
+
+section{
+  background: url(../images/bg.png) repeat-x;
+}
+
+form{
+  padding: 0 @space 0 @space;
+  margin-bottom: @space;
+}
+
+form label{
+  font-size: 13pt;
+  color: @color;
+}
+
+form input[type="text"], 
+form input[type="password"]{
+  background: #ffffff;
+  width: 100%;
+  max-width: 250px;
+  border: 1px solid @color;
+  border-radius: 0;
+  height: 30pt;
+}
+
+legend{
+  font-size: 24pt;
+  color: @color;
+  border: 0;
+  margin-bottom: 10px;
+  padding-top: 15px;
+}
+
+.header-vpsa-logo{
+  left: @space;
+  position:absolute;
+  top: @header-height - 24px;
+}
+
+.header-vpsa-v{
+  right: @space;
+  top: @header-height / 3;
+  position:absolute;
+}
+
+.field, .actions{
+  margin: 0;
+}
+
+.btn{
+  font-size: 9pt;
+  height: 25pt;
+  width: 54pt;
+  padding: 0 20px 0 20px;
+  background-color: #006837;
+  background-image: -moz-linear-gradient(center top , @green, #006837);
+  background-repeat: repeat-x;
+  border: 0;
+  text-shadow: 0 0 0;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  text-shadow: 0 0 0;
+  background-color: #006837;
+  .fn-transition(background-position 0.3s linear);
+}
+
+textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus {
+  border-color: @green;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px @green;
+}
+
+.alert{
+  display:block;
+  left: 50%;
+  line-height: 40px;
+  margin-left: -125px;
+  top: 15px;
+  position: relative;
+  text-align: center;
+  border-radius: 4px;
+  width: 250px;
+  background-color: @red-15;
+  border: 1px solid @red-15;
+  color: @red;
+}

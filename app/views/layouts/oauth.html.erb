@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>VPSA accounts</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<%= stylesheet_link_tag :all %>
+	<link rel="stylesheet/less" type="text/css" href="stylesheets/oauth.less">
+	<%= javascript_include_tag :all %>
+	<%= csrf_meta_tag %>
+
+</head>
+
+<body>
+
+	<header>
+		<object class="header-vpsa-logo" data="images/logo-vpsa.svg" type="image/svg+xml"></object>
+		<object class="header-vpsa-v" data="images/logo.svg" type="image/svg+xml"></object>
+	</header>
+
+	<section>
+
+		<% if flash.notice %>
+		<div class="alert flash_notice">
+			<%= flash.notice %>
+		</div>
+		<% end %>
+
+		<% if flash.alert %>
+		<div class="alert flash_alert">
+			<%= flash.alert %>
+			<% if @info %>
+			<p>
+				Additional information:
+				<%= @info.to_json%>
+			</p>
+			<% end %>
+		</div>
+		<% end %>
+
+		<%= yield %>
+	</section>
+
+</body>
+</html>
